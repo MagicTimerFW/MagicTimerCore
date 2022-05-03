@@ -18,7 +18,7 @@ enum MGTimeUnit: Int {
     case milliSeconds = 1000
 }
 
-class MGStandardTimerFormatter: DateComponentsFormatter, MGTimeFormatter {
+open class MGStandardTimerFormatter: DateComponentsFormatter, MGTimeFormatter {
        
     override init() {
         super.init()
@@ -26,12 +26,12 @@ class MGStandardTimerFormatter: DateComponentsFormatter, MGTimeFormatter {
         zeroFormattingBehavior = .pad
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
-    func converToValidFormat(ti: TimeInterval) -> String? {
+    open func converToValidFormat(ti: TimeInterval) -> String? {
         switch ti {
         case let x where Int(x) >= MGTimeUnit.hour.rawValue:
             allowedUnits = [.hour, .minute, .second]

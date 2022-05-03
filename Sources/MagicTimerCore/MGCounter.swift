@@ -2,7 +2,7 @@
 import Foundation
 
 /// A type that represent counter behavior
-protocol MGCounterBehavior {
+public protocol MGCounterBehavior {
     /// The total counted vlaue
     var totalCountedValue: TimeInterval { get }
     /// The value that affect to totalCountedValue
@@ -25,41 +25,41 @@ protocol MGCounterBehavior {
     func resetToDefaultValue()
 }
 
-class MGCounter: MGCounterBehavior {
+open class MGCounter: MGCounterBehavior {
     
-    var totalCountedValue: TimeInterval = 0
-    var effectiveValue: TimeInterval = 1.0
-    var defultValue: TimeInterval = 0.0 {
+    open var totalCountedValue: TimeInterval = 0
+    open var effectiveValue: TimeInterval = 1.0
+    open var defultValue: TimeInterval = 0.0 {
         willSet {
             totalCountedValue += newValue
         }
     }
     
-    func add() {
+    open func add() {
         totalCountedValue += effectiveValue
     }
     
-    func subtract() {
+    open func subtract() {
         totalCountedValue -= effectiveValue
     }
     
-    func resetTotalCounted() {
+    open func resetTotalCounted() {
         totalCountedValue = 0
     }
     
-    func setTotalCountedValue(_ value: TimeInterval) {
+    open func setTotalCountedValue(_ value: TimeInterval) {
         self.totalCountedValue = value
     }
     
-    func setEffectiveValue(_ value: TimeInterval) {
+    open func setEffectiveValue(_ value: TimeInterval) {
         self.effectiveValue = value
     }
     
-    func setDefaultValue(_ value: TimeInterval) {
+    open func setDefaultValue(_ value: TimeInterval) {
         self.defultValue = value
     }
     
-    func resetToDefaultValue() {
+    open func resetToDefaultValue() {
         totalCountedValue = defultValue
     }
 }

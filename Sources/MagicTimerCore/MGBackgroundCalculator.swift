@@ -3,7 +3,7 @@ import UIKit
 import MagicTimerCommon
 
 /// A type that every calculable object must conform
-protocol MGBackgroundCalculableBehavior {
+public protocol MGBackgroundCalculableBehavior {
     /// The timer fire date
     var timerFireDate: Date? { get }
     /// A Boolean value that determines whether the  is background mode active
@@ -16,13 +16,13 @@ protocol MGBackgroundCalculableBehavior {
     var backgroundTimeCalculateHandler: ((TimeInterval) -> Void)? { get set }
 }
 
-class MGBackgroundCalculator: MGBackgroundCalculableBehavior {
+open class MGBackgroundCalculator: MGBackgroundCalculableBehavior {
     
-    public var timerFireDate: Date?
+    open var timerFireDate: Date?
     
-    public var isActiveBackgroundMode: Bool = false
+    open var isActiveBackgroundMode: Bool = false
 
-    public var backgroundTimeCalculateHandler: ((TimeInterval) -> Void)?
+    open var backgroundTimeCalculateHandler: ((TimeInterval) -> Void)?
         
     init() {
         
@@ -45,14 +45,14 @@ class MGBackgroundCalculator: MGBackgroundCalculableBehavior {
         timerFireDate = nil
     }
     /// Calculate time diffrence between two date
-    public func calculateDateDiffrence() -> TimeInterval? {
+    open func calculateDateDiffrence() -> TimeInterval? {
         guard timerFireDate != nil else { return nil }
         let validTimeSubtraction = abs(timerFireDate! - Date())
         return validTimeSubtraction.convertToTimeInterval()
         
     }
     /// Set timer firing date
-    public func setTimeFiredDate(_ value: Date) {
+    open func setTimeFiredDate(_ value: Date) {
         self.timerFireDate = value
     }
 }

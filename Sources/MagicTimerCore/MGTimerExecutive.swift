@@ -2,7 +2,7 @@
 
 import Foundation
 
-protocol MGExecutiveBehavior {
+public protocol MGExecutiveBehavior {
     /// A core timer of module.
     var scheduleTimer: Timer? { get }
     /// The timer time interval.
@@ -18,17 +18,17 @@ protocol MGExecutiveBehavior {
 /**
  A type that manage core timer. For example starting or suspanding.
  */
-class MGTimerExecutive: MGExecutiveBehavior {
+open class MGTimerExecutive: MGExecutiveBehavior {
     
-    var scheduleTimerHandler: (() -> Void)?
+    open var scheduleTimerHandler: (() -> Void)?
     
-    var scheduleTimer: Timer?
+    open var scheduleTimer: Timer?
     
-    var timeInerval: TimeInterval = 1.0
+    open var timeInerval: TimeInterval = 1.0
     
-    var isTimerAlreadyStarted: Bool = false
+    open var isTimerAlreadyStarted: Bool = false
 
-    func start(compeltion: (() -> Void)?) {
+    open func start(compeltion: (() -> Void)?) {
         isTimerAlreadyStarted = true
         // Create instane of timer and assign to scheduleTimer
         scheduleTimer = Timer.scheduledTimer(withTimeInterval: timeInerval, repeats: true, block: { [weak self] _ in
@@ -43,7 +43,7 @@ class MGTimerExecutive: MGExecutiveBehavior {
         compeltion!()
     }
     
-    func suspand() {
+    open func suspand() {
         // Invalidate core timer
         scheduleTimer?.invalidate()
         isTimerAlreadyStarted = false
