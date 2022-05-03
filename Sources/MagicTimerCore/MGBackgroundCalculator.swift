@@ -1,6 +1,6 @@
-
 import Foundation
 import UIKit
+import MagicTimerCommon
 
 /// A type that every calculable object must conform
 protocol MGBackgroundCalculableBehavior {
@@ -27,8 +27,6 @@ class MGBackgroundCalculator: MGBackgroundCalculableBehavior {
     init() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForegroundNotification), name: UIApplication.willEnterForegroundNotification, object: nil)
-        
-        log(message: "initialized")
     }
     
     @objc private func willEnterForegroundNotification() {
@@ -40,8 +38,6 @@ class MGBackgroundCalculator: MGBackgroundCalculableBehavior {
             backgroundTimeCalculateHandler?(timeInterval)
             
         }
-        log(message: "background time calculation completed")
-
     }
   
     /// Set nil value to timerFiredDate
