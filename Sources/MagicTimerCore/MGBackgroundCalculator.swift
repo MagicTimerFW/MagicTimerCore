@@ -24,7 +24,7 @@ open class MGBackgroundCalculator: MGBackgroundCalculableBehavior {
 
     open var backgroundTimeCalculateHandler: ((TimeInterval) -> Void)?
         
-    init() {
+    public init() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForegroundNotification), name: UIApplication.willEnterForegroundNotification, object: nil)
     }

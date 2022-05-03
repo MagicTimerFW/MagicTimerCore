@@ -28,6 +28,8 @@ open class MGTimerExecutive: MGExecutiveBehavior {
     
     open var isTimerAlreadyStarted: Bool = false
 
+    public init() { }
+    
     open func start(compeltion: (() -> Void)?) {
         isTimerAlreadyStarted = true
         // Create instane of timer and assign to scheduleTimer

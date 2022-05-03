@@ -35,6 +35,8 @@ open class MGCounter: MGCounterBehavior {
         }
     }
     
+    public init() { }
+    
     open func add() {
         totalCountedValue += effectiveValue
     }

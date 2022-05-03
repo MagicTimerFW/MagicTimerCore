@@ -20,7 +20,7 @@ enum MGTimeUnit: Int {
 
 open class MGStandardTimerFormatter: DateComponentsFormatter, MGTimeFormatter {
        
-    override init() {
+    public override init() {
         super.init()
         unitsStyle = .positional
         zeroFormattingBehavior = .pad
